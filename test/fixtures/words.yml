@@ -1,8 +1,10 @@
 
-one:
+karatestenad:
   word: karatestenad
+  normalized_word: karatestenad
   definition: sinnestillstånd flera bälten bortom det standardstenade tillståndet.
 
-two:
+stanley:
   word: stanley kubrick
+  normalized_word: stanley-kubrick
   definition: död filmskapare.

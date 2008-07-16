@@ -1,4 +1,4 @@
-require 'test_helper'
+require '../test_helper'
 
 class WordsControllerTest < ActionController::TestCase
   def test_should_get_index
@@ -14,32 +14,27 @@ class WordsControllerTest < ActionController::TestCase
 
   def test_should_create_word
     assert_difference('Word.count') do
-      post :create, :word => { }
+      post :create, :word => { :word => "yes" }
     end
 
     assert_redirected_to word_path(assigns(:word))
   end
 
   def test_should_show_word
-    get :show, :id => words(:one).id
+    get :show, :id => words(:karatestenad).normalized_word
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => words(:one).id
+    get :edit, :id => words(:karatestenad).normalized_word
     assert_response :success
   end
 
   def test_should_update_word
-    put :update, :id => words(:one).id, :word => { }
+    put :update, :id => words(:karatestenad).normalized_word, :word => { }
     assert_redirected_to word_path(assigns(:word))
   end
 
-  def test_should_destroy_word
-    assert_difference('Word.count', -1) do
-      delete :destroy, :id => words(:one).id
-    end
-
-    assert_redirected_to words_path
-  end
+  
+  
 end
