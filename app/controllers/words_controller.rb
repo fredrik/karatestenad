@@ -44,7 +44,7 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       if @word.save
-        flash[:notice] = 'Word was successfully created.'
+        flash[:notice] = 'un succès!'
         format.html { redirect_to(@word) }
         format.xml  { render :xml => @word, :status => :created, :location => @word }
       else
@@ -61,7 +61,7 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       if @word.update_attributes(params[:word])
-        flash[:notice] = 'Word was successfully updated.'
+        flash[:notice] = 'un succès!'
         format.html { redirect_to(@word) }
         format.xml  { head :ok }
       else
