@@ -1,0 +1,13 @@
+<h1>du omdefinerar '<%= @word.word %>'</h1>
+
+<% form_for(@word) do |f| %>
+  <%= f.error_messages %>
+    
+  <p>
+	<%= f.hidden_field :word %>
+    <%= f.text_area :definition %>
+  </p>
+  <p>
+    <%= f.submit "check" %>
+  </p>
+<% end %>

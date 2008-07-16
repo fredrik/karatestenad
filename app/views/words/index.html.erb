@@ -1,0 +1,19 @@
+<h1>du sätter orden i halsen</h1>
+
+<table style=";">
+  <tr>
+    <th>begreppsrymd</th>
+  </tr>
+
+<% for word in @words %>
+  <tr>
+    <td><%= link_to h(word.word), word %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div id='footer'>
+<%= link_to 'nya ord, nya koncept', new_word_path %>
+</div>

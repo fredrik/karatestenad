@@ -1,0 +1,12 @@
+<p>
+	<b><%=h @word.word %></b>
+	<blockquote>
+		<%=h @word.definition %>
+	</blockquote>
+</p>
+
+
+<div id=footer>
+[<%= link_to "omdefinera", edit_word_path(@word) %> eller
+<%= link_to 'utforska', words_path %>]
+</div>
