@@ -13,7 +13,7 @@ class WordsController < ApplicationController
   # GET /words/1
   # GET /words/1.xml
   def show
-    @word = Word.find(params[:id])
+    @word = Word.find_by_normalized_word(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,12 +34,14 @@ class WordsController < ApplicationController
 
   # GET /words/1/edit
   def edit
-    @word = Word.find(params[:id])
+    @word = Word.find_by_normalized_word(params[:id])
   end
 
   # POST /words
   # POST /words.xml
   def create
+    params[:word]["normalized_word"] = Word.normalize_word params[:word]['word']
+    # todo: check uniquness of normalized_word (in model, right?)
     @word = Word.new(params[:word])
 
     respond_to do |format|
@@ -57,9 +59,10 @@ class WordsController < ApplicationController
   # PUT /words/1
   # PUT /words/1.xml
   def update
-    @word = Word.find(params[:id])
+    @word = Word.find_by_normalized_word(params[:id])
 
     respond_to do |format|
+      # TODO: may not change word (and thus, may not change normalized_word)
       if @word.update_attributes(params[:word])
         flash[:notice] = 'un succès!'
         format.html { redirect_to(@word) }
