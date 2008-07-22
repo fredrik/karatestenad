@@ -9,9 +9,13 @@ class Word < ActiveRecord::Base
   end
   
   def validate_on_create
-    if Word.disallowed_words.member? word
+    if Word.disallowed_words.member?(word)
       errors.add('word', "ordet är reserverat, vilket kanske verkar lite konstigt men som egentligen är fullständigt naturligt.")
     end
+  end
+  
+  def validate_on_update
+    
   end
   
   def self.normalize(word)
