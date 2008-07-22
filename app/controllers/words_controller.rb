@@ -16,8 +16,14 @@ class WordsController < ApplicationController
     @word = Word.find_by_normalized_word(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @word }
+      if @word.nil?
+        @word = Word.new
+        @word.word = params[:id]
+        format.html { render :action => 'new'}
+      else
+        format.html # show.html.erb
+        format.xml  { render :xml => @word }
+      end
     end
   end
 
@@ -43,7 +49,10 @@ class WordsController < ApplicationController
     @word = Word.new(params[:word])
 
     respond_to do |format|
-      if @word.save
+      if params[:preview]
+        @preview = @word.to_html
+        format.html { render :action => 'new' }
+      elsif @word.save
         flash[:notice] = 'un succès!'
         format.html { redirect_to(@word) }
         format.xml  { render :xml => @word, :status => :created, :location => @word }

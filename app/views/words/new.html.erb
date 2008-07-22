@@ -1,4 +1,15 @@
 <h1>du definerar din värld</h1>
+<br/>
+
+<div id='preview'>
+<% if @preview %>
+	<p>un previewè:</p>
+	<blockquote id='definition'>
+		<%= @preview %>
+	</blockquote>
+	<br/>
+<% end %>
+</div>
 
 <% form_for(@word) do |f| %>
   <%= f.error_messages %>
@@ -10,7 +21,8 @@
     <%= f.text_area :definition %>
   </p>
   <p>
-    <%= f.submit "framgång" %>
+	<%= f.submit 'preview', :name => 'preview' %>
+    <%= f.submit 'framgång' %>
   </p>
 <% end %>
 
