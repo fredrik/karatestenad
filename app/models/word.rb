@@ -26,4 +26,8 @@ class Word < ActiveRecord::Base
     normalized_word
   end
 
+  def to_html
+    BlueCloth.new(definition).to_html
+  end
+
 end
