@@ -26,6 +26,10 @@ a:hover { color: #fff; background-color:#000; }
 	margin-left: -10px;
 }
 
+#definition {
+	width: 600px;
+}
+
 
 .notice {
 	color: green;

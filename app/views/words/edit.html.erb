@@ -1,20 +1,26 @@
 <h1>du omdefinerar '<%= @word.word %>'</h1>
 <br/>
 
+<div id='preview'>
+<% if @preview %>
+	<p>un previewè:</p>
+	<blockquote id='definition'>
+		<%= @preview %>
+	</blockquote>
+	<br/>
+<% end %>
+</div>
+
 <% form_for(@word) do |f| %>
-  <%= f.error_messages %>
-    
+  <%= f.error_messages %>   
   <p>
 	<%= f.hidden_field :word %>
-    <%= f.text_area :definition, :cols => 72 %>
+    <%= f.text_area :definition, :cols => 72, :rows => 16 %>
   </p>
   <p>
-	<%= f.submit 'preview' %>
+	<%= f.submit 'preview', :name => 'preview', :id => 'word_preview' %>
     <%= f.submit 'save forevar' %>
   </p>
 <% end %>
 
 
-<div id='preview'>
-
-</div>

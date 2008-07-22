@@ -60,8 +60,13 @@ class WordsController < ApplicationController
     @word = Word.find_by_normalized_word(params[:id])
 
     respond_to do |format|
-      # TODO: may not change word (and thus, may not change normalized_word)
-      if @word.update_attributes(params[:word])
+      if params[:preview]
+        @word.definition = params[:word][:definition]
+        @preview = @word.to_html
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @word.errors, :status => :unprocessable_entity } # well..
+      elsif @word.update_attributes(params[:word])
+        # TODO: may not change word (and thus, may not change normalized_word)
         flash[:notice] = 'un succès!'
         format.html { redirect_to(@word) }
         format.xml  { head :ok }

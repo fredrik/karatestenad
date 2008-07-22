@@ -1,7 +1,7 @@
 <p>
 	<b><%=h @word.word %></b>
-	<blockquote>
-		<%=h @word.definition %>
+	<blockquote id='definition'>
+		<%= @word.to_html %>
 	</blockquote>
 </p>
 
