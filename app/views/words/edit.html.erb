@@ -6,11 +6,15 @@
     
   <p>
 	<%= f.hidden_field :word %>
-    <%= f.text_area :definition %>
+    <%= f.text_area :definition, :cols => 72 %>
   </p>
   <p>
-    <%= f.submit "check" %>
+	<%= f.submit 'preview' %>
+    <%= f.submit 'save forevar' %>
   </p>
 <% end %>
 
-<%= link_to '<--', @word %>
+
+<div id='preview'>
+
+</div>
