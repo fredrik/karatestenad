@@ -8,6 +8,12 @@ class Word < ActiveRecord::Base
     write_attribute("normalized_word", Word.normalize(word))
   end
   
+  def validate_on_create
+    if Word.disallowed_words.member? word
+      errors.add('word', "ordet är reserverat, vilket kanske verkar lite konstigt men som egentligen är fullständigt naturligt.")
+    end
+  end
+  
   def self.normalize(word)
     w = word.dup
     w.gsub! '!', 'exclamationmark'
@@ -21,6 +27,9 @@ class Word < ActiveRecord::Base
     "#{w.downcase.gsub(/[^[:alnum:]]/,'-')}".gsub(/-{2,}/,'-')
   end
 
+  def self.disallowed_words
+    ['new', 'nowayjose']
+  end
 
   def to_param
     normalized_word
