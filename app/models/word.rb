@@ -10,7 +10,7 @@ class Word < ActiveRecord::Base
   
   def validate_on_create
     if Word.disallowed_words.member?(word)
-      errors.add('word', "ordet är reserverat, vilket kanske verkar lite konstigt men som egentligen är fullständigt naturligt.")
+      errors.add('word', "ordet är reserverat, vilket kanske verkar lite konstigt men är egentligen fullständigt naturligt.")
     end
   end
   
