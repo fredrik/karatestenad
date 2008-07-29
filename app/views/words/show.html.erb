@@ -1,15 +1,15 @@
-<p>
-	<b><%=h @word.word %></b>
-	<blockquote id='definition'>
-		<%= @word.to_html %>
-	</blockquote>
-</p>
-
-
-<div id=footer>
-[
-<%= link_to 'omdefinera', edit_word_path(@word) %> eller
+<div id=menu>
+<%= link_to 'ändra', edit_word_path(@word) %> eller
 <%= link_to 'utforska', words_path %> eller
-<%= link_to 'kvart i tolv en fredagkväll', new_word_path %>
-]
+<%= link_to 'gör något nytt', new_word_path %>.
 </div>
+
+<div id='definition'>
+  <p>
+    <b><%=h @word.word %></b>
+    <blockquote id='definition-quote'>
+      <%= @word.to_html %>
+    </blockquote>
+  </p>
+</div>
+

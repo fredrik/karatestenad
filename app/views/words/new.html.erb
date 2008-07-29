@@ -1,5 +1,10 @@
-<h1>du definerar din värld</h1>
-<br/>
+<div id='header'>
+  <h1>du definerar din värld</h1>
+  <div class='changed-my-mind'>
+    <%= link_to 'nej, jag ångrade mig', words_path %>
+  </div>
+</div>
+
 
 <div id='preview'>
 <% if @preview %>
@@ -11,6 +16,7 @@
 <% end %>
 </div>
 
+<div id='word-form'>
 <% form_for(@word) do |f| %>
   <%= f.error_messages %>
 
@@ -18,11 +24,14 @@
     <%= f.text_field :word %>
   </p>
   <p>
-    <%= f.text_area :definition %>
+    <%= f.text_area :definition, :cols => 72, :rows => 16 %>
   </p>
   <p>
-	<%= f.submit 'preview', :name => 'preview' %>
+	<%= f.submit 'förvy', :name => 'preview' %>
     <%= f.submit 'framgång' %>
   </p>
 <% end %>
+</div>
+
+
 

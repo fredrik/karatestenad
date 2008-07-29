@@ -1,3 +1,7 @@
+<div class='changed-my-mind'>
+<%= link_to 'nej, jag ångrade mig', word_path(@word) %>
+</div>
+
 <h1>du omdefinerar '<%= @word.word %>'</h1>
 <br/>
 
@@ -11,6 +15,7 @@
 <% end %>
 </div>
 
+<div id='word-form'>
 <% form_for(@word) do |f| %>
   <%= f.error_messages %>   
   <p>
@@ -18,9 +23,9 @@
     <%= f.text_area :definition, :cols => 72, :rows => 16 %>
   </p>
   <p>
-	<%= f.submit 'preview', :name => 'preview', :id => 'word_preview' %>
+	<%= f.submit 'förvy', :name => 'preview', :id => 'word_preview' %>
     <%= f.submit 'save forevar' %>
   </p>
 <% end %>
-
+</div>
 
