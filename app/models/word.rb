@@ -1,7 +1,8 @@
 class Word < ActiveRecord::Base
 
+  validates_presence_of   :word
   validates_uniqueness_of :word
-  validates_uniqueness_of :normalized_word  
+  validates_uniqueness_of :normalized_word
 
   before_create :set_normalized_word
   def set_normalized_word
