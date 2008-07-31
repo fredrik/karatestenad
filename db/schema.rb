@@ -19,4 +19,7 @@ ActiveRecord::Schema.define(:version => 20080716111537) do
     t.datetime "updated_at"
   end
 
+  add_index "words", ["normalized_word"], :name => "normalized_words_are_unique", :unique => true
+  add_index "words", ["word"], :name => "words_are_unique", :unique => true
+
 end
