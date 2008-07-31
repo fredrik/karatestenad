@@ -6,7 +6,7 @@
 
 <div id='definition'>
   <p>
-    <b><%=h @word.word %></b>
+    <b><%= link_to h(@word.word), edit_word_path(@word) %></b>
     <blockquote id='definition-quote'>
       <%= @word.to_html %>
     </blockquote>

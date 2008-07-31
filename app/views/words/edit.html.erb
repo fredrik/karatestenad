@@ -1,9 +1,8 @@
-<div class='changed-my-mind'>
-<%= link_to 'nej, jag ångrade mig', word_path(@word) %>
+<div id='header'>
+	<h1>du definerar '<%= @word.word %>'</h1>
+	<div class='changed-my-mind'><%= link_to 'nej, jag ångrade mig', word_path(@word) %></div>
 </div>
 
-<h1>du omdefinerar '<%= @word.word %>'</h1>
-<br/>
 
 <div id='preview'>
 <% if @preview %>
