@@ -3,7 +3,8 @@ class WordsController < ApplicationController
   # GET /words.xml
   def index
     @words = Word.find(:all)
-
+    @collections = partition(@words)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @words }
