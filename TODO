@@ -1,1 +1,2 @@
 [] word.rb: change method name of normalized_word to normalized
+[] use WhatLanguage (http://github.com/peterc/whatlanguage) to guess the language of any given word
