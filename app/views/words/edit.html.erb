@@ -1,30 +1,25 @@
 <div id='header'>
-	<h1>du definerar '<%= @word.word %>'</h1>
-	<div class='changed-my-mind'><%= link_to 'nej, jag ångrade mig', word_path(@word) %></div>
+  <h1>du definerar '<%= @word.word %>'</h1>
 </div>
 
 
+<% if @preview -%>
 <div id='preview'>
-<% if @preview %>
-	<p>un previewè:</p>
-	<blockquote id='definition'>
-		<%= @preview %>
-	</blockquote>
-	<br/>
-<% end %>
+  <%= @preview %>
 </div>
+<% end -%>
 
 <div id='word-form'>
 <% form_for(@word) do |f| %>
   <%= f.error_messages %>   
   <p>
-	<%= f.hidden_field :word %>
+    [<%= link_to 'cancel the apocalypse', word_path(@word), :class => 'tiny_href' %>]<br/>
+    <%= f.hidden_field :word %>
     <%= f.text_area :definition, :cols => 72, :rows => 16 %>
   </p>
   <p>
-	<%= f.submit 'förvy', :name => 'preview', :id => 'word_preview' %>
-    <%= f.submit 'save forevar' %>
+    <%= f.submit 'förhandsgranska', :name => 'preview', :id => 'word_preview' %>
+    <%= f.submit 'spara' %>
   </p>
 <% end %>
 </div>
-

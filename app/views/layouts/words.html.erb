@@ -9,11 +9,21 @@
 </head>
 <body>
 
-<p class='notice'>
-<%= flash[:notice] %>
-</p>
+<div id='k'>
+  <b><%= link_to 'keee.', '/' %></b>
+</div>
+	
+<div id='menu'>
+  <%# TODO: include menu %>
+</div>
 
-<%= yield  %>
+<span class='notice'>
+  <%= flash[:notice] %>
+</span>
+
+<div id='content'>
+<%= yield %>
+</div>
 
 </body>
 </html>

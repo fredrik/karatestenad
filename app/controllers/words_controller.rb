@@ -3,7 +3,6 @@ class WordsController < ApplicationController
   # GET /words.xml
   def index
     @words = Word.find(:all)
-    @collections = partition(@words)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -51,6 +50,7 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       if params[:preview]
+        flash[:notice] = 'PREVIEW MODE: ENABLED.'
         @preview = @word.to_html
         format.html { render :action => 'new' }
       elsif @word.save
@@ -58,6 +58,7 @@ class WordsController < ApplicationController
         format.html { redirect_to(@word) }
         format.xml  { render :xml => @word, :status => :created, :location => @word }
       else
+        # is this really what I want?
         format.html { render :action => "new" }
         format.xml  { render :xml => @word.errors, :status => :unprocessable_entity }
       end
@@ -71,6 +72,7 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       if params[:preview]
+        flash[:notice] = 'PREVIEW MODE: ENABLED.'
         @word.definition = params[:word][:definition]
         @preview = @word.to_html
         format.html { render :action => "edit" }

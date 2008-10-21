@@ -1,23 +1,16 @@
 <div id='header'>
   <h1>du definerar din värld</h1>
-  <div class='changed-my-mind'><%= link_to 'nej, jag ångrade mig', words_path %></div>
 </div>
 
-
+<% if @preview -%>
 <div id='preview'>
-<% if @preview %>
-	<p>un previewè:</p>
-	<blockquote id='definition'>
-		<%= @preview %>
-	</blockquote>
-	<br/>
-<% end %>
+  <%= @preview %>
 </div>
+<% end -%>
 
 <div id='word-form'>
-<% form_for(@word) do |f| %>
+<% form_for(@word) do |f| -%>
   <%= f.error_messages %>
-
   <p>
     <%= f.text_field :word %>
   </p>
@@ -25,11 +18,8 @@
     <%= f.text_area :definition, :cols => 72, :rows => 16 %>
   </p>
   <p>
-	<%= f.submit 'förvy', :name => 'preview' %>
-    <%= f.submit 'framgång' %>
+    <%= f.submit 'förhandsgranska', :name => 'preview' %>
+    <%= f.submit 'spara' %>
   </p>
-<% end %>
+<% end -%>
 </div>
-
-
-

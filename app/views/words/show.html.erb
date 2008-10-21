@@ -1,4 +1,4 @@
-<div id=menu>
+<div id='header'>
 <%= link_to 'ändra', edit_word_path(@word) %> eller
 <%= link_to 'utforska', words_path %> eller
 <%= link_to 'gör något nytt', new_word_path %>.
@@ -6,10 +6,9 @@
 
 <div id='definition'>
   <p>
-    <b><%= link_to h(@word.word), edit_word_path(@word) %></b>
+    <b><%=h(@word.word)%></b> [<%= link_to 'edit', edit_word_path(@word), :class => 'tiny_href' %>]
     <blockquote id='definition-quote'>
       <%= @word.to_html %>
     </blockquote>
   </p>
 </div>
-

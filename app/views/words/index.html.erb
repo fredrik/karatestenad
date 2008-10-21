@@ -9,14 +9,18 @@
     <th>begreppsrymd</th>
   </tr>
 
-<% for word in @words %>
   <tr>
-    <td><%= link_to h(word.word), word %></td>
+  <% for collection in partition(@words) %>
+	<td>
+    <% for word in collection %>
+      <%= link_to h(word.word), word %><br/>
+    <% end %>
+	</td>
+  <% end %>
   </tr>
-<% end %>
 </table>
 </div>
 
 <div id='footer'>
-	
+  
 </div>
