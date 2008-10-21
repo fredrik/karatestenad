@@ -6,6 +6,7 @@ def report_changes
   n = changed.size
   if n > 0
     puts 'the following words have had, will have or did at some point risk having their normalizations differ from the recognized world standard.'
+  end
   changed.each do |w|
     w.normalized_word
   end
