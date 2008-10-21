@@ -16,32 +16,46 @@ class Word < ActiveRecord::Base
   end
   
   def validate_on_update
-    
-  end
-  
-  def self.normalize(word)
-    w = word.dup
-    w.gsub! '!', 'exclamationmark'
-    w.gsub! '?', 'questionmark'
-    w.gsub! ':', 'colon'
-    w.gsub! '.', 'dot'
-    w.gsub! ',', 'comma'
-    # Some explanation is required: the 1st .gsub strips out anything not alphanumeric and turns it into a hyphen,
-    # the 2nd .gsub changes any multiple hyphens into a single hyphen.
-    # from http://www.seoonrails.com/to_param-for-better-looking-urls
-    "#{w.downcase.gsub(/[^[:alnum:]]/,'-')}".gsub(/-{2,}/,'-')
+    # hm?
   end
 
+  
+  #readability: a plus.
+  def self.normalize(word)
+    w = word.dup.downcase
+    w.gsub! '!', '-exclamationmark-'
+    w.gsub! '?', '-questionmark-'
+    w.gsub! ':', '-colon-'
+    w.gsub! '.', '-dot-'
+    w.gsub! ',', '-comma-'
+    w.gsub! '$', '-dollar-'
+    # TODO: add all (cool) languages and their umlautables here!
+    w.gsub! 'å', 'a'
+    w.gsub! 'ä', 'a'
+    w.gsub! 'ö', 'o'
+    # remove non-alpha chars
+    w.gsub!(/[^[:alnum:]]/,'-')
+    # remove repeated dashes
+    w.gsub!(/-{2,}/,'-')
+    # remove leading and trailing dashes
+    w.gsub!(/^-*/, '')
+    w.gsub!(/-*$/, '')
+    return w
+  end
+
+  # this is a bug -- there are no disallowed words.
   def self.disallowed_words
     ['new', 'nowayjose']
   end
-
+  
+  
   def to_param
     normalized_word
   end
 
   def to_html
-    BlueCloth.new(definition).to_html
+    html = BlueCloth.new(definition).to_html
+    html ? "nil." : html.empty?
   end
 
 end
