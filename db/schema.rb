@@ -9,17 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080716111537) do
+ActiveRecord::Schema.define(:version => 20081021070410) do
 
   create_table "words", :force => true do |t|
     t.string   "word"
-    t.string   "normalized_word"
+    t.string   "normalized"
     t.string   "definition"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "words", ["normalized_word"], :name => "normalized_words_are_unique", :unique => true
-  add_index "words", ["word"], :name => "words_are_unique", :unique => true
+  add_index "words", ["normalized"], :name => "normalized_words_are_unique", :unique => true
+  add_index "words", ["word"], :name => "altered_words_are_unique", :unique => true
 
 end

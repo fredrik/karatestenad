@@ -21,17 +21,17 @@ class WordsControllerTest < ActionController::TestCase
   end
 
   def test_should_show_word
-    get :show, :id => words(:karatestenad).normalized_word
+    get :show, :id => words(:karatestenad).normalized
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => words(:karatestenad).normalized_word
+    get :edit, :id => words(:karatestenad).normalized
     assert_response :success
   end
 
   def test_should_update_word
-    put :update, :id => words(:karatestenad).normalized_word, :word => { }
+    put :update, :id => words(:karatestenad).normalized, :word => { }
     assert_redirected_to word_path(assigns(:word))
   end
 

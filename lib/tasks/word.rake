@@ -1,24 +1,15 @@
 # working with words much?
 require File.dirname(__FILE__) + '/../../config/environment'
 
-def report_changes
-  changed = Word.find(:all).map {|w| w unless w.normalized_word == Word.normalize(w.word) }.compact
-  n = changed.size
-  if n > 0
-    puts 'the following words have had, will have or did at some point risk having their normalizations differ from the recognized world standard.'
-  end
-  changed.each do |w|
-    w.normalized_word
-  end
-end
-
 namespace :karatestenad do
-  namespace :defs do
-    
-    desc 'something, what I have not yet decided'
+  namespace :defs do    
+    desc 'for all wörds: compare static normalization of wörd with saved dito.'
     task :check_normalizations do
-      puts "checkin'"
-      report_changes unless Word.find(:all).map {|w| w.normalized_word == Word.normalize(w.word) }.all?      
+      changed = Word.find(:all).map {|w| w unless w.normalized == Word.normalize(w.word) }.compact
+      puts 'the following normalizations differ from the recognized world standard:' if changed.size > 0
+      changed.each do |w|
+        puts "'#{w.word}' (normalization is #{Word.normalize(w.word)}, was #{w.normalized}"
+      end
     end
   end
 end

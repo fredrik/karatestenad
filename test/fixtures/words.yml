@@ -1,15 +1,14 @@
-
 karatestenad:
   word: karatestenad
-  normalized_word: karatestenad
+  normalized: karatestenad
   definition: sinnestillstånd flera bälten bortom det standardstenade tillståndet.
 
 stanley:
   word: stanley kubrick
-  normalized_word: stanley-kubrick
+  normalized: stanley-kubrick
   definition: död filmskapare.
 
 fucking close to trocadero:
-    word: fucking close to trocadero
-    normalized_word: fucking-close-to-trocadero
-    definition: läsk blandad med lämpliga mängder ginzano (orange?)
+  word: fucking close to trocadero
+  normalized: fucking-close-to-trocadero
+  definition: läsk blandad med lämpliga mängder ginzano orange.

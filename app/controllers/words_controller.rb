@@ -13,7 +13,7 @@ class WordsController < ApplicationController
   # GET /words/1
   # GET /words/1.xml
   def show
-    @word = Word.find_by_normalized_word(params[:id])
+    @word = Word.find_by_normalized(params[:id])
 
     respond_to do |format|
       if @word.nil?
@@ -40,7 +40,7 @@ class WordsController < ApplicationController
 
   # GET /words/1/edit
   def edit
-    @word = Word.find_by_normalized_word(params[:id])
+    @word = Word.find_by_normalized(params[:id])
   end
 
   # POST /words
@@ -68,7 +68,7 @@ class WordsController < ApplicationController
   # PUT /words/1
   # PUT /words/1.xml
   def update
-    @word = Word.find_by_normalized_word(params[:id])
+    @word = Word.find_by_normalized(params[:id])
 
     respond_to do |format|
       if params[:preview]
@@ -78,7 +78,7 @@ class WordsController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @word.errors, :status => :unprocessable_entity } # well..
       elsif @word.update_attributes(params[:word])
-        # TODO: may not change word (and thus, may not change normalized_word)
+        # TODO: may not change word (and thus may not change normalized)
         flash[:notice] = 'un succès!'
         format.html { redirect_to(@word) }
         format.xml  { head :ok }

@@ -18,9 +18,9 @@ class WordTest < ActiveSupport::TestCase
     
   end
   
-  def test_should_set_normalized_word
+  def test_should_set_normalized
     w = Word.create :word => "sure stuffs", :definition => "that which we know to be true"
-    assert_equal w.normalized_word, "sure-stuffs"
+    assert_equal w.normalized, "sure-stuffs"
   end
   
   def test_should_not_be_able_to_change_word

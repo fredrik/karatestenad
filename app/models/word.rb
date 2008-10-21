@@ -1,12 +1,11 @@
 class Word < ActiveRecord::Base
-
   validates_presence_of   :word
   validates_uniqueness_of :word
-  validates_uniqueness_of :normalized_word
+  validates_uniqueness_of :normalized
 
-  before_create :set_normalized_word
-  def set_normalized_word
-    write_attribute("normalized_word", Word.normalize(word))
+  before_create :set_normalized
+  def set_normalized
+    write_attribute("normalized", Word.normalize(word))
   end
   
   def validate_on_create
@@ -50,12 +49,12 @@ class Word < ActiveRecord::Base
   
   
   def to_param
-    normalized_word
+    normalized
   end
 
   def to_html
     html = BlueCloth.new(definition).to_html
-    html ? "nil." : html.empty?
+    html.empty? ? "nil." : html
   end
 
 end
