@@ -8,6 +8,7 @@ module WordsHelper
   
   # one basic method. half the input into two basically equally sized partitions.
   def half(stuffs)
+    return [[],[]] if stuffs.nil? or stuffs.empty? 
     cut = stuffs.size/2
     a = stuffs[0..cut]
     b = stuffs[cut+1..stuffs.size]
