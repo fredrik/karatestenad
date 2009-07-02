@@ -76,7 +76,8 @@ class WordsController < ApplicationController
         @word.definition = params[:word][:definition]
         @preview = @word.to_html
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @word.errors, :status => :unprocessable_entity } # well..
+        format.xml  { render :xml => @word.errors,
+                             :status => :unprocessable_entity } # well..
       elsif @word.update_attributes(params[:word])
         # TODO: may not change word (and thus may not change normalized)
         flash[:notice] = 'un succès!'
@@ -84,7 +85,8 @@ class WordsController < ApplicationController
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @word.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @word.errors,
+                             :status => :unprocessable_entity }
       end
     end
   end
