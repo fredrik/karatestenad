@@ -37,4 +37,10 @@ class WordTest < ActiveSupport::TestCase
     #assert_equal [[],[]], half([])
   end
   
+  def test_normalize
+    assert_equal Word.normalize('-'), 'dash'
+    assert_equal Word.normalize('+'), 'plus'
+    assert_equal Word.normalize('++'), 'plus-plus'
+  end
+  
 end
