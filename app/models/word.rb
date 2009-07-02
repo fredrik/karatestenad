@@ -22,12 +22,15 @@ class Word < ActiveRecord::Base
   #readability: a plus.
   def self.normalize(word)
     w = word.dup.downcase
+    w.gsub! '-', '-dash-'
     w.gsub! '!', '-exclamationmark-'
     w.gsub! '?', '-questionmark-'
     w.gsub! ':', '-colon-'
     w.gsub! '.', '-dot-'
     w.gsub! ',', '-comma-'
     w.gsub! '$', '-dollar-'
+    w.gsub! '+', '-plus-'
+    w.gsub! ' ', '-'
     # TODO: add all (cool) languages and their umlautables here!
     w.gsub! 'å', 'a'
     w.gsub! 'ä', 'a'
